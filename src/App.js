@@ -47,6 +47,9 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
+      <Link to="/" style={{ margin: 10 }}>
+        Home
+      </Link>
       <Link to="/cookies" style={{ margin: 10 }}>
         Cookies
       </Link>
