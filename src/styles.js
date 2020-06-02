@@ -1,7 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
-import { Link, NavLink } from "react-router-dom";
 
-export const CookieWrapper = styled(Link)`
+export const CookieWrapper = styled.div`
   margin: 20px;
   color: ${(props) => props.theme.mainColor};
   text-decoration: none;
@@ -61,30 +60,6 @@ export const ListWrapper = styled.div`
   display: flex;
 `;
 
-export const Logo = styled(Link)`
-  img {
-    width: 8rem;
-  }
-`;
-
-export const Nav = styled.div`
-  margin: 1.25em;
-
-  div {
-    float: right;
-  }
-`;
-
-export const NavItem = styled(NavLink)`
-  padding: 0.25em 1em;
-  text-decoration: none;
-  color: ${(props) => props.theme.mainColor};
-
-  &.active {
-    color: ${(props) => props.theme.pink};
-  }
-`;
-
 export const Search = styled.input`
   padding: 0.5rem;
   margin-top: 10px;
@@ -95,6 +70,7 @@ export const Search = styled.input`
 `;
 
 export const ThemeButton = styled.button`
+  margin: 1.25em;
   font-size: 1em;
   padding: 0.25em 1em;
   border-radius: 3px;
