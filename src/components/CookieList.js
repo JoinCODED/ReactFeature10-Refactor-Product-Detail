@@ -21,9 +21,9 @@ const CookieList = (props) => {
     ));
 
   return (
-    <div>
+    <div className="container">
       <SearchBar setQuery={setQuery} />
-      <ListWrapper>{cookieList}</ListWrapper>
+      <ListWrapper className="row">{cookieList}</ListWrapper>
     </div>
   );
 };

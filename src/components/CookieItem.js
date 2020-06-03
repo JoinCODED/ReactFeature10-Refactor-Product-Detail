@@ -6,13 +6,14 @@ import DeleteButton from "./buttons/DeleteButton";
 
 // Styling
 import { CookieWrapper } from "../styles";
+import { Link } from "react-router-dom";
 
 const CookieItem = (props) => {
   const cookie = props.cookie;
 
   return (
-    <CookieWrapper>
-      <Link to={`/cookies/${cookie.id}`}>
+    <CookieWrapper className="col-lg-4 col-md-6 col-sm-6">
+      <Link to={`/cookies/${cookie.slug}`}>
         <img alt={cookie.name} src={cookie.image} />
       </Link>
       <p>{cookie.name}</p>

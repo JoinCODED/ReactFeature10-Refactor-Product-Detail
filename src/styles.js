@@ -4,14 +4,17 @@ export const CookieWrapper = styled.div`
   margin: 20px;
   color: ${(props) => props.theme.mainColor};
   text-decoration: none;
+  text-align: center;
 
   img {
-    width: 200px;
-    height: 200px;
+    width: 12em;
+    height: 12em;
   }
 
   p {
-    text-align: center;
+    &.cookie-name {
+      color: ${(props) => props.theme.mainColor};
+    }
 
     &.cookie-price {
       color: ${(props) => props.theme.pink};
@@ -54,6 +57,25 @@ export const ListWrapper = styled.div`
   align-items: center;
   justify-content: center;
   display: flex;
+`;
+
+export const Logo = styled(Link)`
+  img {
+    width: 8rem;
+  }
+`;
+
+export const Nav = styled.nav`
+  background-color: ${(props) => props.theme.backgroundColor};
+`;
+
+export const NavItem = styled(NavLink)`
+  color: ${(props) => props.theme.mainColor};
+  padding: 0.25em 1em;
+
+  &.active {
+    color: ${(props) => props.theme.pink};
+  }
 `;
 
 export const SearchBarStyled = styled.input`
