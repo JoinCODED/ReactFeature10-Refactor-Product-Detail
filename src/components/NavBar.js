@@ -4,7 +4,6 @@ import React from "react";
 import lightLogo from "../light-logo.png";
 import darkLogo from "../dark-logo.png";
 import { Nav, ThemeButton, Logo, NavItem } from "../styles";
-import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
   return (

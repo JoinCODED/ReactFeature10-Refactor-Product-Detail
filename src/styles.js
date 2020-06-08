@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from "styled-components";
+import { Link, NavLink } from "react-router-dom";
 
 export const CookieWrapper = styled.div`
   margin: 20px;
@@ -93,7 +94,6 @@ export const ShopImage = styled.img`
 `;
 
 export const ThemeButton = styled.button`
-  margin: 1.25em;
   font-size: 1em;
   padding: 0.25em 1em;
   border-radius: 3px;
