@@ -3,11 +3,11 @@ import React from "react";
 // Styling
 import lightLogo from "../light-logo.png";
 import darkLogo from "../dark-logo.png";
-import { Nav, ThemeButton, Logo, NavItem } from "../styles";
+import { NavStyled, ThemeButton, Logo, NavItem } from "../styles";
 
 const NavBar = (props) => {
   return (
-    <Nav className="navbar navbar-expand-lg">
+    <NavStyled className="navbar navbar-expand-lg">
       <Logo className="navbar-brand" to="/">
         <img
           src={props.currentTheme === "light" ? lightLogo : darkLogo}
@@ -24,7 +24,7 @@ const NavBar = (props) => {
           </ThemeButton>
         </div>
       </div>
-    </Nav>
+    </NavStyled>
   );
 };
 

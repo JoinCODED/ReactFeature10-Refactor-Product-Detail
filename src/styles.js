@@ -66,7 +66,7 @@ export const Logo = styled(Link)`
   }
 `;
 
-export const Nav = styled.nav`
+export const NavStyled = styled.nav`
   background-color: ${(props) => props.theme.backgroundColor};
 `;
 
