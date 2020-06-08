@@ -327,81 +327,6 @@ export const NavItem = styled(NavLink)`
 
 6. Now whenever, we go to `/cookies` you'll see that the `cookies` button is glowing with the `fuchsia`. Let's remove the fuchsia background color, it's killing me.
 
-## Step 5 - Delete Button
-
-Something that's been bothering me is the delete button in `CookieDetail` and `CookieItem`. It's repeated! So why not put it in its own component?
-
-1. Create a new folder called `buttons` in `components`. In `Buttons`, create a file called `Delete.js`:
-
-```javascript
-import React from "react";
-
-const Delete = () => {
-  return <div></div>;
-};
-
-export default Delete;
-```
-
-2. Copy the delete button from `CookieDetail` or `CookieItem`. Don't forget to import `DeleteButton` styled component and fix the path
-
-```javascript
-import React from "react";
-import { DeleteButton } from "../../styles";
-
-const Delete = (props) => {
-  return (
-    <DeleteButton onClick={(event) => props.deleteCookie(event, cookie.id)}>
-      Delete
-    </DeleteButton>
-  );
-};
-
-export default Delete;
-```
-
-3. Import `Delete` in `CookieDetail`:
-
-```javascript
-import Delete from "./buttons/Delete";
-```
-
-4. Replace `DeleteButton` with `Delete`:
-
-```jsx
-  <p>{cookie.price} KD</p>
-  <Delete cookieId={cookie.id} deleteCookie={props.deleteCookie} />
-</DetailWrapper>
-```
-
-5. As you can see, we got an error that `cookie` is undefined. So we need to pass `cookie`, but since we only need the ID let's just pass `cookie.id`:
-
-```jsx
-<Delete cookieId={cookie.id} />
-```
-
-6. Let's try deleting a cookie from its detail page, we got the following error: `props.deleteCookie is not a function`.
-
-7. We need to pass `deleteCookie` as a prop:
-
-```jsx
-<Delete cookieId={cookie.id} deleteCookie={props.deleteCookie} />
-```
-
-8. It's working! Let's cleanup `CookieItem` as well. Import `Delete`:
-
-```javascript
-import Delete from "./buttons/Delete";
-```
-
-9. Replace `DeleteButton` with `Delete`:
-
-```jsx
-<Delete cookieId={cookie.id} deleteCookie={props.deleteCookie} />
-```
-
-10. Let's try it put. It's working!
-
 ## Step 6 - Responsive Design
 
 One of the strongest weapons of Bootstrap is the responsive design and grid system. Let's fix our list of cookies to be responsive:
@@ -464,7 +389,7 @@ const CookieItem = ({ cookie, deleteCookie }) => {};
 7. Don't forget to remove the word `props`:
 
 ```jsx
-<Delete cookieId={cookie.id} deleteCookie={deleteCookie} />
+<DeleteButton cookieId={cookie.id} deleteCookie={deleteCookie} />
 ```
 
 8. What do you think? Much cleaner right?
