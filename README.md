@@ -8,6 +8,80 @@
 - Navbar
 - Link vs NavLink
 
+## Step 0: Slugs
+
+To have the name of the cookie in the URL, we will basically pass the cookie's name instead of the ID.
+
+1. In `CookieItem`, pass `cookie.name` to `Link` instead of `cookie.id`
+
+```jsx
+<Link to={`/cookies/${cookie.name}`}>
+  <img alt={cookie.name} src={cookie.image} />
+</Link>
+```
+
+2. Oops. The code broke. Let's fix it in `CookieDetail` by changing `find`'s condition, remove the `+` from `cookieId` as we're comparing two strings we don't need it
+
+```javascript
+const cookie = props.cookies.find((cookie) => cookie.name === cookieId);
+```
+
+Take a closer look at the URL. It became even uglier! We need to fix it by removing the spaces and replacing them with dashes (kebab notation). The proper way, and the easiest way is to add a new field in our data that has the name of the cookie but in kebab notation. The technical name for this is `slug`.
+
+3. Go to `cookies.js`, add a field called `slug` to all cookies
+
+```javascript
+const cookies = [
+  {
+    id: 1,
+    name: "Chocolate Chip Cookie",
+    slug: "chocolate-chip-cookie",
+    ...
+  },
+  {
+    id: 2,
+    name: "Cute Cookie",
+    slug: "cute-cookie",
+    ...
+  },
+  {
+    id: 3,
+    name: "Katakeet Cookie",
+    slug: "katakeet-cookie",
+    ...
+  },
+];
+```
+
+4. Now instead of passing the name, replace it with `slug`. In `CookieItem`
+
+```jsx
+<Link to={`/cookies/${cookie.slug}`}>
+```
+
+5. Fix it as well in `CookieDetail`
+
+```javascript
+const cookie = props.cookies.find((cookie) => cookie.slug === cookieId);
+```
+
+6. Let's try it out. Wow! It looks much better!!
+
+7. The naming `cookieId` can be confusing, let's fix it everywhere, starting with `App`. Change the route parameter's name from `cookieId` to `cookieSlug`.
+
+```jsx
+<Route path="/cookies/:cookieSlug">
+  <CookieDetail cookies={_cookies} deleteCookie={deleteCookie} />
+</Route>
+```
+
+8. Also change it in `CookieDetail`:
+
+```javascript
+const { cookieSlug } = useParams();
+const cookie = props.cookies.find((cookie) => cookie.slug === cookieSlug);
+```
+
 ## Step 1: Logo
 
 1. Let's start with adding a logo to our website. Add your logo image to the `src` folder. Then import in in `App`:
@@ -346,10 +420,10 @@ One of the strongest weapons of Bootstrap is the responsive design and grid syst
 <CookieWrapper className="col-lg-4 col-md-6 col-sm-6">
   <Link to={`/cookies/${cookie.id}`}>
     <img alt={cookie.name} src={cookie.image} />
-    <p className="cookie-name">{cookie.name}</p>
-    <p className="cookie-price">{cookie.price} KD</p>
-    <Delete cookieId={cookie.id} deleteCookie={deleteCookie} />
   </Link>
+  <p className="cookie-name">{cookie.name}</p>
+  <p className="cookie-price">{cookie.price} KD</p>
+  <Delete cookieId={cookie.id} deleteCookie={deleteCookie} />
 </CookieWrapper>
 ```
 
