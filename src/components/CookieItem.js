@@ -12,7 +12,7 @@ const CookieItem = (props) => {
 
   return (
     <CookieWrapper>
-      <Link to={`/cookies/${cookie.slug}`}>
+      <Link to={`/cookies/${cookie.id}`}>
         <img alt={cookie.name} src={cookie.image} />
       </Link>
       <p>{cookie.name}</p>
