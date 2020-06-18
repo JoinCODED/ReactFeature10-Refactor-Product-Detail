@@ -49,7 +49,7 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/cookies/:cookieId">
+        <Route path="/cookies/:cookieSlug">
           <CookieDetail cookies={_cookies} deleteCookie={deleteCookie} />
         </Route>
         <Route path="/cookies">
