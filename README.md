@@ -314,7 +314,7 @@ import darkLogo from "../dark-logo.png";
 7. Let's turn the parent `nav` into a styled component to change the background color. In `styles`:
 
 ```javascript
-const Nav = styled.div`
+const NavStyled = styled.nav`
   background-color: ${(props) => props.theme.backgroundColor};
 `;
 ```
@@ -322,7 +322,7 @@ const Nav = styled.div`
 8. Import it and wrap your JSX in `NavBar` with it. Remove `navbar-light bg-light`:
 
 ```jsx
-<Nav className="navbar navbar-expand-lg">
+<NavStyled className="navbar navbar-expand-lg">
   <Logo className="navbar-brand" to="/">
     <img
       src={props.currentTheme === "light" ? lightLogo : darkLogo}
@@ -339,7 +339,7 @@ const Nav = styled.div`
       </ThemeButton>
     </div>
   </div>
-</Nav>
+</NavStyled>
 ```
 
 9. Remove the `margin` from `ThemeButton` to have everything on one line:
