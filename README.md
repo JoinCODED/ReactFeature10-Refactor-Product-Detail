@@ -82,7 +82,33 @@ const { cookieSlug } = useParams();
 const cookie = props.cookies.find((cookie) => cookie.slug === cookieSlug);
 ```
 
-## Step 1: Logo
+## Step 1: Redirect
+
+Let's go to the detail page of any cookie and delete it. The cookie is deleted and we're navigated to the list page. But what happens if we click on the back button? Oops, we got an error.
+
+Another thing, let's go to `cookies/fhgviuhg`, we got an error!
+
+We need some condition, if the cookie doesn't exist redirect to the list page.
+
+1. To do that, we will use a component called `Redirect` from React Router. In `CookieDetail`, import `Redirect` from`react-router-dom`
+
+```javascript
+import { Link, Redirect, useParams } from "react-router-dom";
+```
+
+2. After looking for the `cookie`, we will check if this cookie actually exists. If it doesn't, we will return the `Redirect` component with the `/cookies` path.
+
+```javascript
+if (!cookie) return <Redirect to="/cookies" />;
+```
+
+3. Let's try going to the `cookies/fhgviuhg`, tararararaaaa. It redirected us to the cookie list.
+
+4. Let's delete a cookie from the detail page, and hit the back button. Tarararaaaaaaa!! No errors!
+
+5. Now we can remove the `history.push` from `DeleteButton` component.
+
+## Step 2: Logo
 
 1. Let's start with adding a logo to our website. Add your logo image to the `src` folder. Then import in in `App`:
 
@@ -146,7 +172,7 @@ export const Logo = styled(Link)`
 </Logo>
 ```
 
-## Step 2: Setup Bootstrap
+## Step 3: Setup Bootstrap
 
 1. Let's install Bootstrap to make designing a bit easier:
 
@@ -162,7 +188,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 3. Add a Bootstrap button in any component to make sure it's working.
 
-## Step 3: NavBar
+## Step 4: NavBar
 
 1. There are too many elements in our `App`. Let's create a new component called `NavBar.js`:
 
@@ -354,7 +380,7 @@ const ThemeButton = styled.button`
 `;
 ```
 
-## Step 4: NavLink
+## Step 5: NavLink
 
 1. Now, when the user clicks on `Cookies`, we need some indication that `Cookies` is active. To do that, we will replace `Link` with `NavLink`. Let's import it:
 
