@@ -84,7 +84,7 @@ const cookie = props.cookies.find((cookie) => cookie.slug === cookieSlug);
 
 ## Step 1: Redirect
 
-Let's go to the detail page of any cookie and delete it. The cookie is deleted and we're navigated to the list page. But what happens if we click on the back button? Oops, we got an error.
+Let's go to the detail page of any cookie and delete it. Nothing happens! If we check the React Dev Tools, the cookie is actually being deleted from the state, we need to navigate to another page.
 
 Another thing, let's go to `cookies/fhgviuhg`, we got an error!
 
@@ -105,8 +105,6 @@ if (!cookie) return <Redirect to="/cookies" />;
 3. Let's try going to the `cookies/fhgviuhg`, tararararaaaa. It redirected us to the cookie list.
 
 4. Let's delete a cookie from the detail page, and hit the back button. Tarararaaaaaaa!! No errors!
-
-5. Now we can remove the `history.push` from `DeleteButton` component.
 
 ## Step 2: Logo
 
