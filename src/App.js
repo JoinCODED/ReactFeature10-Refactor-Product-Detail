@@ -1,18 +1,15 @@
-import React, { useState } from "react";
 import { Route, Switch } from "react-router";
-import { Link } from "react-router-dom";
-
-// Components
-import CookieDetail from "./components/CookieDetail";
-import CookieList from "./components/CookieList";
-import Home from "./components/Home";
-
-// Data
-import cookies from "./cookies";
 
 // Styling
-import { GlobalStyle, ThemeButton } from "./styles";
+import { GlobalStyle } from "./styles";
+import Home from "./components/Home";
+import NavBar from "./components/NavBar";
+// Components
+import ProductList from "./components/ProductList";
 import { ThemeProvider } from "styled-components";
+// Data
+import products from "./products";
+import { useState } from "react";
 
 const theme = {
   light: {
@@ -31,10 +28,12 @@ const theme = {
 
 function App() {
   const [currentTheme, setCurrentTheme] = useState("light");
-  const [_cookies, setCookies] = useState(cookies);
+  const [_products, setCookies] = useState(products);
 
   const deleteCookie = (cookieId) => {
-    const updatedCookies = _cookies.filter((cookie) => cookie.id !== +cookieId);
+    const updatedCookies = _products.filter(
+      (cookie) => cookie.id !== +cookieId
+    );
     setCookies(updatedCookies);
   };
 
@@ -44,24 +43,13 @@ function App() {
   return (
     <ThemeProvider theme={theme[currentTheme]}>
       <GlobalStyle />
-      <Link to="/" style={{ margin: 10 }}>
-        Home
-      </Link>
-      <Link to="/cookies" style={{ margin: 10 }}>
-        Cookies
-      </Link>
-      <ThemeButton onClick={toggleTheme}>
-        {currentTheme === "light" ? "Dark" : "Light"} Mode
-      </ThemeButton>
+      <NavBar currentTheme={currentTheme} toggleTheme={toggleTheme} />
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/cookies/:cookieId">
-          <CookieDetail cookies={_cookies} deleteCookie={deleteCookie} />
-        </Route>
-        <Route path="/cookies">
-          <CookieList cookies={_cookies} deleteCookie={deleteCookie} />
+        <Route path="/products">
+          <ProductList products={_products} deleteCookie={deleteCookie} />
         </Route>
       </Switch>
     </ThemeProvider>
